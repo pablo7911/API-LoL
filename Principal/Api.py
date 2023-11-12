@@ -7,7 +7,7 @@ import time
 nombre_invocador = "pablo911"
 
 #Key de la Api
-key = "RGAPI-92d85b22-8a00-4526-a764-0f3da6144a61"
+key = "RGAPI-29f91bab-f904-4e73-834e-6bf6601a4946"
 
 #región a la que pertenece
 region = "euw1"
@@ -65,7 +65,7 @@ def maestria_campeones_all():
     datos = peticion2.json()
 
     #Abrir archivo IdToChamp.json donde estan todos los CHAMPS y sus ID
-    with open('IdToChamp.json', 'r') as archivo_original:
+    with open('Principal/IdToChamp.json', 'r') as archivo_original:
         global listaIdChamp 
         listaIdChamp = json.load(archivo_original)
 
@@ -107,12 +107,12 @@ def maestria_campeones_rol(rol):
     datos = peticion2.json()
 
     #Abrir archivo IdToChamp.json donde estan todos los CHAMPS y sus ID
-    with open('IdToChamp.json', 'r') as archivo_original:
+    with open('Principal/IdToChamp.json', 'r') as archivo_original:
         global listaIdChamp 
         listaIdChamp = json.load(archivo_original)
 
     #Abrir archivo IdToChamp.json donde estan todos los CHAMPS y sus ID
-    with open('ChampToRole.json', 'r') as archivo_original:
+    with open('Principal/ChampToRole.json', 'r') as archivo_original:
         global listaRol
         listaRol = json.load(archivo_original)
 
@@ -156,12 +156,12 @@ def maestria_campeones_rol_ordenado_hora(rol):
     datos = peticion2.json()
 
     #Abrir archivo IdToChamp.json donde estan todos los CHAMPS y sus ID
-    with open('IdToChamp.json', 'r') as archivo_original:
+    with open('Principal/IdToChamp.json', 'r') as archivo_original:
         global listaIdChamp 
         listaIdChamp = json.load(archivo_original)
 
     #Abrir archivo IdToChamp.json donde estan todos los CHAMPS y sus ID
-    with open('ChampToRole.json', 'r') as archivo_original:
+    with open('Principal/ChampToRole.json', 'r') as archivo_original:
         global listaRol
         listaRol = json.load(archivo_original)
 
@@ -212,7 +212,7 @@ def maestria_campeones_all_ordenado_hora():
     datos = peticion2.json()
 
     #Abrir archivo IdToChamp.json donde estan todos los CHAMPS y sus ID
-    with open('IdToChamp.json', 'r') as archivo_original:
+    with open('Principal/IdToChamp.json', 'r') as archivo_original:
         global listaIdChamp 
         listaIdChamp = json.load(archivo_original)
 
@@ -247,22 +247,26 @@ def maestria_campeones_all_ordenado_hora():
 
 #Devuelve una lista de 100 games de un usuario
 def lista_games(total):
-    resultado=""
-
     #Print inicial
     resultado2 =  "LISTA DE PARTIDAS:" + "\n"+ "\n"
 
     #---LISTA DE CHAMPIONS MAESTRIA---
     #Peticion para pedir lista de campeones con maestria
     peticionLM = requests.get("https://" + region2 + ".api.riotgames.com/lol/match/v5/matches/by-puuid/"+puuid+"/ids?start=0&count="+str(total)+"&api_key="+ key)
-    datos = peticionLM
+    datos = peticionLM.json()
     
     for i in datos:
-            peticion = requests.get("https://" + region2 + ".api.riotgames.com/lol/match/v5/matches/" +str(i) + "&api_key="+ key)
+            peticion = requests.get("https://" + region2 + ".api.riotgames.com/lol/match/v5/matches/" +str(i) + "?api_key="+ key)
             datos_2pet = peticion.json()
-            dato_champ = datos_2pet['ParticipantDto']
+            dato_match = datos_2pet['info']['participants']
             
-            print("Partida con: " + dato_champ['championName'] + "GANA?="+str(dato_champ['win']))
+            for i in dato_match:
+                if(i['summonerName'] == nombre_invocador): datos_jugador = i
+            #datos win or loss
 
+            win = "LOSS"
+            if(datos_jugador['win']==True):win = "WIN"
 
-lista_games(100)
+            resultado2 += "{:<4} {:<10} {}/{}/{}\n".format(win, datos_jugador['championName'], datos_jugador['kills'], datos_jugador['assists'], datos_jugador['deaths'])
+    return resultado2
+print(lista_games(20))
