@@ -7,7 +7,7 @@ import time
 nombre_invocador = "pablo911"
 
 #Key de la Api
-key = "RGAPI-29f91bab-f904-4e73-834e-6bf6601a4946"
+key = ""
 
 #región a la que pertenece
 region = "euw1"
