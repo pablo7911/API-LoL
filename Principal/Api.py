@@ -92,7 +92,7 @@ def maestria_campeones_all():
 
     return resultado2 + resultado
           
-# Devuelve lista con personajes con mas maestria de cada posicion (top,jungla,mid,adc,support)
+# Devuelve lista con personajes con mas maestria de cada posicion Valores disponibles -> (top,jungla,mid,adc,support)
 def maestria_campeones_rol(rol):
     resultado=""
 
@@ -141,7 +141,7 @@ def maestria_campeones_rol(rol):
 
     return resultado2 + resultado
 
-# Devuelve lista con personajes con mas maestria de cada posicion (top,jungla,mid,adc,support) ORDENADA POR LAST TIME PLAYED
+# Devuelve lista con personajes con mas maestria de cada posicion Valores disponibles -> (top,jungla,mid,adc,support) (ORDENADA POR LAST TIME PLAYED)
 def maestria_campeones_rol_ordenado_hora(rol):
     resultado=""
 
@@ -197,7 +197,7 @@ def maestria_campeones_rol_ordenado_hora(rol):
 
     return resultado2 + valor_x + resultado
 
-# Devuelve una lista con los personajes con mas maestria ORDENADA POR LAST TIME PLAYED
+# Devuelve una lista con los personajes con mas maestria (ORDENADA POR LAST TIME PLAYED)
 def maestria_campeones_all_ordenado_hora():
     resultado=""
 
@@ -245,10 +245,15 @@ def maestria_campeones_all_ordenado_hora():
 
     return resultado2 + valor_x + resultado
 
-#Devuelve una lista de 100 games de un usuario
+#Devuelve una lista de "x" games de un usuario Rango Valido -> (1-100)
 def lista_games(total):
     #Print inicial
     resultado2 =  "LISTA DE PARTIDAS:" + "\n"+ "\n"
+
+    #Abrir archivo IdToChamp.json donde estan todos los CHAMPS y sus ID
+    with open('Principal/IdToQueue.json', 'r') as archivo_queue:
+        global archivo_colas
+        archivo_colas = json.load(archivo_queue)
 
     #---LISTA DE CHAMPIONS MAESTRIA---
     #Peticion para pedir lista de campeones con maestria
@@ -256,17 +261,38 @@ def lista_games(total):
     datos = peticionLM.json()
     
     for i in datos:
+            print(i)
             peticion = requests.get("https://" + region2 + ".api.riotgames.com/lol/match/v5/matches/" +str(i) + "?api_key="+ key)
             datos_2pet = peticion.json()
             dato_match = datos_2pet['info']['participants']
+
+            cola_nombre = ""
+            dato_gamemode = datos_2pet['info']['queueId']
+            for k in archivo_colas:
+                if k['queueId'] == dato_gamemode: 
+                    cola_nombre = k['description']
+                    break
+
+            if "games" in cola_nombre:
+                cola_nombre = cola_nombre.replace(" games","")
             
-            for i in dato_match:
-                if(i['summonerName'] == nombre_invocador): datos_jugador = i
+            for l in dato_match:
+                if(l['summonerName'] == nombre_invocador): datos_jugador = l
             #datos win or loss
 
             win = "LOSS"
             if(datos_jugador['win']==True):win = "WIN"
 
-            resultado2 += "{:<4} {:<10} {}/{}/{}\n".format(win, datos_jugador['championName'], datos_jugador['kills'], datos_jugador['assists'], datos_jugador['deaths'])
+            resultado2 += "{:<4} {:<10} {}/{}/{} {:<10}\n".format(win, datos_jugador['championName'], datos_jugador['kills'], datos_jugador['assists'], datos_jugador['deaths'],cola_nombre)
     return resultado2
-print(lista_games(20))
+
+#Devuelve una lista de "x" games de un usuario de una cola especiífica
+def lista_games_cola(total,cola): #SIN HACER
+  return ""
+
+#-----PRINTS-----#
+#print(maestria_campeones_all())
+#print(maestria_campeones_all_ordenado_hora())
+#print(maestria_campeones_rol('mid'))
+#print(maestria_campeones_rol_ordenado_hora('mid'))
+#print(lista_games(20))
