@@ -7,7 +7,7 @@ import time
 nombre_invocador = "pablo911"
 
 #Key de la Api
-key = ""
+key = "RGAPI-cc73bbef-291c-4484-9dad-9e49a432b0fc"
 
 #región a la que pertenece
 region = "euw1"
@@ -23,7 +23,7 @@ datos = peticion1.json()
 
 #puuid de cada player
 puuid = datos['puuid']
-print( puuid)
+
 
 level = datos['summonerLevel']
 
@@ -45,17 +45,19 @@ def epoch(hora):
 
 
 #---FUNCIONES PRINCIPALES---
-print("----------DATOS INICIALES------------")
-print("{:<20} {:<15}".format(str(nombre_invocador),"Nivel: "+str(level)))
-print("-------------------------------------")
-print("\n")
+
+#Devuelve el nomrbe de invocador y el nivel del jugador
+def nombre_y_nivel():
+    res = ("{:<20} {:<15}".format(str(nombre_invocador),"Nivel: "+str(level)))
+
+    return res
 
 # Devuelve una lista con los personajes con mas maestria 
 def maestria_campeones_all():
     resultado=""
 
     #Print inicial
-    resultado2 =  "LISTA DE MAESTRIAS:" + "\n"+ "\n"
+    resultado2 =  ""
 
     #---LISTA DE CHAMPIONS MAESTRIA---
     #Peticion para pedir lista de campeones con maestria
@@ -86,9 +88,6 @@ def maestria_campeones_all():
     p_suma = t_suma.format(suma).replace(",",".")
     resultado = resultado + ("\n")
     resultado = resultado + ("{:<20} {:<15}".format("Total de puntos: ",p_suma))
-    resultado = resultado + ("\n")
-    resultado = resultado + ("-------------------------------")
-    resultado = resultado + ("\n")
 
     return resultado2 + resultado
           
@@ -97,7 +96,7 @@ def maestria_campeones_rol(rol):
     resultado=""
 
     #Print inicial 
-    resultado2 =  "LISTA DE MAESTRIAS POR ROL:" + "\n"+ "\n"
+    resultado2 =  ""
 
     #---LISTA DE CHAMPIONS MAESTRIA---
     #Peticion para pedir lista de campeones con maestria
@@ -135,9 +134,6 @@ def maestria_campeones_rol(rol):
     p_suma = t_suma.format(suma).replace(",",".")
     resultado = resultado + ("\n")
     resultado = resultado + ("{:<20} {:<15}".format("Total de puntos: ",p_suma))
-    resultado = resultado + ("\n")
-    resultado = resultado + ("-------------------------------")
-    resultado = resultado + ("\n")
 
     return resultado2 + resultado
 
@@ -146,7 +142,7 @@ def maestria_campeones_rol_ordenado_hora(rol):
     resultado=""
 
     #Print inicial -----LISTA DE MAESTRIAS EN HORAS-----
-    resultado2 =  "LISTA DE MAESTRIAS LAST PLAYED:" + "\n"+ "\n"
+    resultado2 =  ""
 
     #---LISTA DE CHAMPIONS MAESTRIA---
     #Peticion para pedir lista de campeones con maestria
@@ -191,9 +187,6 @@ def maestria_campeones_rol_ordenado_hora(rol):
     p_suma = t_suma.format(suma).replace(",",".")
     resultado = resultado + ("\n")
     resultado = resultado + ("{:<20} {:<15}".format("Total de puntos: ",p_suma))
-    resultado = resultado + ("\n")
-    resultado = resultado + ("-------------------------------")
-    resultado = resultado + ("\n")
 
     return resultado2 + valor_x + resultado
 
@@ -202,7 +195,7 @@ def maestria_campeones_all_ordenado_hora():
     resultado=""
 
     #Print inicial
-    resultado2 =  "LISTA DE MAESTRIAS:" + "\n"+ "\n"
+    resultado2 =  ""
 
     #---LISTA DE CHAMPIONS MAESTRIA---
     #Peticion para pedir lista de campeones con maestria
@@ -239,16 +232,13 @@ def maestria_campeones_all_ordenado_hora():
     p_suma = t_suma.format(suma).replace(",",".")
     resultado = resultado + ("\n")
     resultado = resultado + ("{:<20} {:<15}".format("Total de puntos: ",p_suma))
-    resultado = resultado + ("\n")
-    resultado = resultado + ("-------------------------------")
-    resultado = resultado + ("\n")
 
     return resultado2 + valor_x + resultado
 
 #Devuelve una lista de "x" games de un usuario Rango Valido -> (1-100)
 def lista_games(total):
     #Print inicial
-    resultado2 =  "LISTA DE PARTIDAS:" + "\n"+ "\n"
+    resultado2 =  ""
 
     #Abrir archivo IdToChamp.json donde estan todos los CHAMPS y sus ID
     with open('Principal/IdToQueue.json', 'r') as archivo_queue:
@@ -286,13 +276,61 @@ def lista_games(total):
             resultado2 += "{:<4} {:<10} {}/{}/{} {:<10}\n".format(win, datos_jugador['championName'], datos_jugador['kills'], datos_jugador['assists'], datos_jugador['deaths'],cola_nombre)
     return resultado2
 
-#Devuelve una lista de "x" games de un usuario de una cola especiífica
-def lista_games_cola(total,cola): #SIN HACER
-  return ""
+#Devuelve una lista de "x" games de un usuario de una cola especiífica -> (5v5 Ranked Solo, 5v5 ARAM,...)
+def lista_games_cola(total,cola): 
+    #Print inicial
+    resultado2 =  ""
+
+    #Abrir archivo IdToChamp.json donde estan todos los CHAMPS y sus ID
+    with open('Principal/IdToQueue.json', 'r') as archivo_queue:
+        global archivo_colas
+        archivo_colas = json.load(archivo_queue)
+
+    contador = 0
+    iteraciones = 0
+
+    while(contador < total):
+
+        #---LISTA DE CHAMPIONS MAESTRIA---
+        #Peticion para pedir lista de campeones con maestria
+        peticionLM = requests.get("https://" + region2 + ".api.riotgames.com/lol/match/v5/matches/by-puuid/"+puuid+"/ids?start="+str(iteraciones)+"&count="+str(int(total)-contador)+"&api_key="+ key)
+        datos = peticionLM.json()
+        
+        for i in datos:
+                iteraciones+=1
+                peticion = requests.get("https://" + region2 + ".api.riotgames.com/lol/match/v5/matches/" +str(i) + "?api_key="+ key)
+                datos_2pet = peticion.json()
+                dato_match = datos_2pet['info']['participants']
+
+                cola_nombre = ""
+                dato_gamemode = datos_2pet['info']['queueId']
+
+                for k in archivo_colas:
+                    if k['queueId'] == dato_gamemode: 
+                        cola_nombre = k['description']
+                        break
+
+                if "games" in cola_nombre:
+                    cola_nombre = cola_nombre.replace(" games","")
+                    
+                if(cola_nombre == cola):
+                    
+                    for l in dato_match:
+                        if(l['summonerName'] == nombre_invocador): datos_jugador = l
+                    #datos win or loss
+
+                    win = "LOSS"
+                    if(datos_jugador['win']==True):win = "WIN"
+                    contador+=1
+                    resultado2 += "{:<4} {:<10} {}/{}/{} {:<10}\n".format(win, datos_jugador['championName'], datos_jugador['kills'], datos_jugador['assists'], datos_jugador['deaths'],cola_nombre)
+    return resultado2
 
 #-----PRINTS-----#
+#print( puuid)
+#print(nombre_y_nivel())
 #print(maestria_campeones_all())
 #print(maestria_campeones_all_ordenado_hora())
 #print(maestria_campeones_rol('mid'))
 #print(maestria_campeones_rol_ordenado_hora('mid'))
-#print(lista_games(20))
+#print(lista_games(2))
+#print(lista_games_cola(3,'5v5 ARAM'))
