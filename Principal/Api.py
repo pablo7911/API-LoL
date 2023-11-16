@@ -273,7 +273,7 @@ def lista_games(total):
             win = "LOSS"
             if(datos_jugador['win']==True):win = "WIN"
 
-            resultado2 += "{:<4} {:<10} {}/{}/{} {:<10}\n".format(win, datos_jugador['championName'], datos_jugador['kills'], datos_jugador['assists'], datos_jugador['deaths'],cola_nombre)
+            resultado2 += "{:<4} {:<10} {}/{}/{} {:<10}\n".format(win, datos_jugador['championName'], datos_jugador['kills'], datos_jugador['deaths'] ,datos_jugador['assists'],cola_nombre)
     return resultado2
 
 #Devuelve una lista de "x" games de un usuario de una cola especiífica -> (5v5 Ranked Solo, 5v5 ARAM,...)
@@ -322,7 +322,7 @@ def lista_games_cola(total,cola):
                     win = "LOSS"
                     if(datos_jugador['win']==True):win = "WIN"
                     contador+=1
-                    resultado2 += "{:<4} {:<10} {}/{}/{} {:<10}\n".format(win, datos_jugador['championName'], datos_jugador['kills'], datos_jugador['assists'], datos_jugador['deaths'],cola_nombre)
+                    resultado2 += "{:<4} {:<10} {}/{}/{} {:<10}\n".format(win, datos_jugador['championName'], datos_jugador['kills'],  datos_jugador['deaths'],datos_jugador['assists'],cola_nombre)
     return resultado2
 
 #-----PRINTS-----#
@@ -333,4 +333,4 @@ def lista_games_cola(total,cola):
 #print(maestria_campeones_rol('mid'))
 #print(maestria_campeones_rol_ordenado_hora('mid'))
 #print(lista_games(2))
-#print(lista_games_cola(3,'5v5 ARAM'))
+#print(lista_games_cola(20,'5v5 Ranked Solo'))
