@@ -1,6 +1,0 @@
-print("""resultadojugador1_1 = (datosjugador1_1[0] + datosjugador1_1[1] + datosjugador1_1[2] + datosjugador1_1[3] + datosjugador1_1[4] + datosjugador1_1[5] + datosjugador1_1[6] + datosjugador1_1[7] + ((jugador1_1[8]/total1_muertes)/total1_muertes_inversa)/9)
-    resultadojugador1_2 = (datosjugador1_2[0] + datosjugador1_2[1] + datosjugador1_2[2] + datosjugador1_2[3] + datosjugador1_2[4] + datosjugador1_2[5] + datosjugador1_2[6] + datosjugador1_2[7] + ((jugador1_2[8]/total1_muertes)/total1_muertes_inversa)/9)
-    resultadojugador1_3 = (datosjugador1_3[0] + datosjugador1_3[1] + datosjugador1_3[2] + datosjugador1_3[3] + datosjugador1_3[4] + datosjugador1_3[5] + datosjugador1_3[6] + datosjugador1_3[7] + ((jugador1_3[8]/total1_muertes)/total1_muertes_inversa)/9)
-    resultadojugador1_4 = (datosjugador1_4[0] + datosjugador1_4[1] + datosjugador1_4[2] + datosjugador1_4[3] + datosjugador1_4[4] + datosjugador1_4[5] + datosjugador1_4[6] + datosjugador1_4[7] + ((jugador1_4[8]/total1_muertes)/total1_muertes_inversa)/9)
-    resultadojugador1_5 = (datosjugador1_5[0] + datosjugador1_5[1] + datosjugador1_5[2] + datosjugador1_5[3] + datosjugador1_5[4] + datosjugador1_5[5] + datosjugador1_5[6] + datosjugador1_5[7] + ((jugador1_5[8]/total1_muertes)/total1_muertes_inversa)/9)
-""".replace("total1","total2").replace("jugador1","jugador2"))

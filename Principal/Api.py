@@ -70,11 +70,17 @@ def total_carreo(x): #[kills, asistencias, daño, oro, daño_torres, control_war
     datosjugador1_4 = [jugador1_4[0]/total1_kills, jugador1_4[1]/total1_asistencias, jugador1_4[2]/total1_daño, jugador1_4[3]/total1_oro, jugador1_4[4]/total1_daño_torres, jugador1_4[5]/total1_control_wards, jugador1_4[6]/total1_wards, jugador1_4[7]/total1_wards_quitados]
     datosjugador1_5 = [jugador1_5[0]/total1_kills, jugador1_5[1]/total1_asistencias, jugador1_5[2]/total1_daño, jugador1_5[3]/total1_oro, jugador1_5[4]/total1_daño_torres, jugador1_5[5]/total1_control_wards, jugador1_5[6]/total1_wards, jugador1_5[7]/total1_wards_quitados]
 
-    resultadojugador1_1 = (datosjugador1_1[0] + datosjugador1_1[1] + datosjugador1_1[2] + datosjugador1_1[3] + datosjugador1_1[4] + datosjugador1_1[5] + datosjugador1_1[6] + datosjugador1_1[7] + ((jugador1_1[8]/total1_muertes)/total1_muertes_inversa)/9)
-    resultadojugador1_2 = (datosjugador1_2[0] + datosjugador1_2[1] + datosjugador1_2[2] + datosjugador1_2[3] + datosjugador1_2[4] + datosjugador1_2[5] + datosjugador1_2[6] + datosjugador1_2[7] + ((jugador1_2[8]/total1_muertes)/total1_muertes_inversa)/9)
-    resultadojugador1_3 = (datosjugador1_3[0] + datosjugador1_3[1] + datosjugador1_3[2] + datosjugador1_3[3] + datosjugador1_3[4] + datosjugador1_3[5] + datosjugador1_3[6] + datosjugador1_3[7] + ((jugador1_3[8]/total1_muertes)/total1_muertes_inversa)/9)
-    resultadojugador1_4 = (datosjugador1_4[0] + datosjugador1_4[1] + datosjugador1_4[2] + datosjugador1_4[3] + datosjugador1_4[4] + datosjugador1_4[5] + datosjugador1_4[6] + datosjugador1_4[7] + ((jugador1_4[8]/total1_muertes)/total1_muertes_inversa)/9)
-    resultadojugador1_5 = (datosjugador1_5[0] + datosjugador1_5[1] + datosjugador1_5[2] + datosjugador1_5[3] + datosjugador1_5[4] + datosjugador1_5[5] + datosjugador1_5[6] + datosjugador1_5[7] + ((jugador1_5[8]/total1_muertes)/total1_muertes_inversa)/9)
+    print(datosjugador1_1)
+    print(datosjugador1_2)
+    print(datosjugador1_3)
+    print(datosjugador1_4)
+    print(datosjugador1_5)
+
+    resultadojugador1_1 = (datosjugador1_1[0] + datosjugador1_1[1] + datosjugador1_1[2] + datosjugador1_1[3] + datosjugador1_1[4] + datosjugador1_1[5] + datosjugador1_1[6] + datosjugador1_1[7] + ((jugador1_1[8]/total1_muertes)/total1_muertes_inversa))/9
+    resultadojugador1_2 = (datosjugador1_2[0] + datosjugador1_2[1] + datosjugador1_2[2] + datosjugador1_2[3] + datosjugador1_2[4] + datosjugador1_2[5] + datosjugador1_2[6] + datosjugador1_2[7] + ((jugador1_2[8]/total1_muertes)/total1_muertes_inversa))/9
+    resultadojugador1_3 = (datosjugador1_3[0] + datosjugador1_3[1] + datosjugador1_3[2] + datosjugador1_3[3] + datosjugador1_3[4] + datosjugador1_3[5] + datosjugador1_3[6] + datosjugador1_3[7] + ((jugador1_3[8]/total1_muertes)/total1_muertes_inversa))/9
+    resultadojugador1_4 = (datosjugador1_4[0] + datosjugador1_4[1] + datosjugador1_4[2] + datosjugador1_4[3] + datosjugador1_4[4] + datosjugador1_4[5] + datosjugador1_4[6] + datosjugador1_4[7] + ((jugador1_4[8]/total1_muertes)/total1_muertes_inversa))/9
+    resultadojugador1_5 = (datosjugador1_5[0] + datosjugador1_5[1] + datosjugador1_5[2] + datosjugador1_5[3] + datosjugador1_5[4] + datosjugador1_5[5] + datosjugador1_5[6] + datosjugador1_5[7] + ((jugador1_5[8]/total1_muertes)/total1_muertes_inversa))/9
 
     #EQUIPO2
 
@@ -93,24 +99,121 @@ def total_carreo(x): #[kills, asistencias, daño, oro, daño_torres, control_war
     total2_control_wards = jugador2_1[5] + jugador2_2[5] + jugador2_3[5] + jugador2_4[5] + jugador2_5[5]
     total2_wards = jugador2_1[6] + jugador2_2[6] + jugador2_3[6] + jugador2_4[6] + jugador2_5[6]
     total2_wards_quitados = jugador2_1[7] + jugador2_2[7] + jugador2_3[7] + jugador2_4[7] + jugador2_5[7]
-    total2_escudo_aliados = jugador2_1[8] + jugador2_2[8] + jugador2_3[8] + jugador2_4[8] + jugador2_5[8]
     total2_muertes = jugador2_1[8] + jugador2_2[8] + jugador2_3[8] + jugador2_4[8] + jugador2_5[8]
 
     total2_muertes_inversa = 1-(jugador2_1[8]/total2_muertes) + 1-(jugador2_2[8]/total2_muertes) + 1-(jugador2_3[8]/total2_muertes) + 1-(jugador2_4[8]/total2_muertes) + 1-(jugador2_5[8]/total2_muertes)
-
     datosjugador2_1 = [jugador2_1[0]/total2_kills, jugador2_1[1]/total2_asistencias, jugador2_1[2]/total2_daño, jugador2_1[3]/total2_oro, jugador2_1[4]/total2_daño_torres, jugador2_1[5]/total2_control_wards, jugador2_1[6]/total2_wards, jugador2_1[7]/total2_wards_quitados]
     datosjugador2_2 = [jugador2_2[0]/total2_kills, jugador2_2[1]/total2_asistencias, jugador2_2[2]/total2_daño, jugador2_2[3]/total2_oro, jugador2_2[4]/total2_daño_torres, jugador2_2[5]/total2_control_wards, jugador2_2[6]/total2_wards, jugador2_2[7]/total2_wards_quitados]
     datosjugador2_3 = [jugador2_3[0]/total2_kills, jugador2_3[1]/total2_asistencias, jugador2_3[2]/total2_daño, jugador2_3[3]/total2_oro, jugador2_3[4]/total2_daño_torres, jugador2_3[5]/total2_control_wards, jugador2_3[6]/total2_wards, jugador2_3[7]/total2_wards_quitados]
     datosjugador2_4 = [jugador2_4[0]/total2_kills, jugador2_4[1]/total2_asistencias, jugador2_4[2]/total2_daño, jugador2_4[3]/total2_oro, jugador2_4[4]/total2_daño_torres, jugador2_4[5]/total2_control_wards, jugador2_4[6]/total2_wards, jugador2_4[7]/total2_wards_quitados]
     datosjugador2_5 = [jugador2_5[0]/total2_kills, jugador2_5[1]/total2_asistencias, jugador2_5[2]/total2_daño, jugador2_5[3]/total2_oro, jugador2_5[4]/total2_daño_torres, jugador2_5[5]/total2_control_wards, jugador2_5[6]/total2_wards, jugador2_5[7]/total2_wards_quitados]
 
-    resultadojugador2_1 = (datosjugador2_1[0] + datosjugador2_1[1] + datosjugador2_1[2] + datosjugador2_1[3] + datosjugador2_1[4] + datosjugador2_1[5] + datosjugador2_1[6] + datosjugador2_1[7] + ((jugador2_1[8]/total2_muertes)/total2_muertes_inversa)/9)
-    resultadojugador2_2 = (datosjugador2_2[0] + datosjugador2_2[1] + datosjugador2_2[2] + datosjugador2_2[3] + datosjugador2_2[4] + datosjugador2_2[5] + datosjugador2_2[6] + datosjugador2_2[7] + ((jugador2_2[8]/total2_muertes)/total2_muertes_inversa)/9)
-    resultadojugador2_3 = (datosjugador2_3[0] + datosjugador2_3[1] + datosjugador2_3[2] + datosjugador2_3[3] + datosjugador2_3[4] + datosjugador2_3[5] + datosjugador2_3[6] + datosjugador2_3[7] + ((jugador2_3[8]/total2_muertes)/total2_muertes_inversa)/9)
-    resultadojugador2_4 = (datosjugador2_4[0] + datosjugador2_4[1] + datosjugador2_4[2] + datosjugador2_4[3] + datosjugador2_4[4] + datosjugador2_4[5] + datosjugador2_4[6] + datosjugador2_4[7] + ((jugador2_4[8]/total2_muertes)/total2_muertes_inversa)/9)
-    resultadojugador2_5 = (datosjugador2_5[0] + datosjugador2_5[1] + datosjugador2_5[2] + datosjugador2_5[3] + datosjugador2_5[4] + datosjugador2_5[5] + datosjugador2_5[6] + datosjugador2_5[7] + ((jugador2_5[8]/total2_muertes)/total2_muertes_inversa)/9)
+    print(datosjugador2_1)
+    print(datosjugador2_2)
+    print(datosjugador2_3)
+    print(datosjugador2_4)
+    print(datosjugador2_5)
 
-    return [[[resultadojugador1_1],[resultadojugador1_2],[resultadojugador1_3],[resultadojugador1_4],[resultadojugador1_5]],[[resultadojugador2_1],[resultadojugador2_2],[resultadojugador2_3],[resultadojugador2_4],[resultadojugador2_5]]]
+    resultadojugador2_1 = (datosjugador2_1[0] + datosjugador2_1[1] + datosjugador2_1[2] + datosjugador2_1[3] + datosjugador2_1[4] + datosjugador2_1[5] + datosjugador2_1[6] + datosjugador2_1[7] + ((jugador2_1[8]/total2_muertes)/total2_muertes_inversa))/9
+    resultadojugador2_2 = (datosjugador2_2[0] + datosjugador2_2[1] + datosjugador2_2[2] + datosjugador2_2[3] + datosjugador2_2[4] + datosjugador2_2[5] + datosjugador2_2[6] + datosjugador2_2[7] + ((jugador2_2[8]/total2_muertes)/total2_muertes_inversa))/9
+    resultadojugador2_3 = (datosjugador2_3[0] + datosjugador2_3[1] + datosjugador2_3[2] + datosjugador2_3[3] + datosjugador2_3[4] + datosjugador2_3[5] + datosjugador2_3[6] + datosjugador2_3[7] + ((jugador2_3[8]/total2_muertes)/total2_muertes_inversa))/9
+    resultadojugador2_4 = (datosjugador2_4[0] + datosjugador2_4[1] + datosjugador2_4[2] + datosjugador2_4[3] + datosjugador2_4[4] + datosjugador2_4[5] + datosjugador2_4[6] + datosjugador2_4[7] + ((jugador2_4[8]/total2_muertes)/total2_muertes_inversa))/9
+    resultadojugador2_5 = (datosjugador2_5[0] + datosjugador2_5[1] + datosjugador2_5[2] + datosjugador2_5[3] + datosjugador2_5[4] + datosjugador2_5[5] + datosjugador2_5[6] + datosjugador2_5[7] + ((jugador2_5[8]/total2_muertes)/total2_muertes_inversa))/9
+
+    return [[resultadojugador1_1,resultadojugador1_2,resultadojugador1_3,resultadojugador1_4,resultadojugador1_5],[resultadojugador2_1,resultadojugador2_2,resultadojugador2_3,resultadojugador2_4,resultadojugador2_5]]
+
+def carreo_partida(id): #lineas->(TOP,JUNGLE,MIDDLE,BOTTOM,UTILITY)
+    peticion = requests.get("https://" + region2 + ".api.riotgames.com/lol/match/v5/matches/" +str(id)+ "?api_key="+ key)
+    players = peticion.json()['info']['participants']
+
+    equipo1_win = False
+    top1 = []
+    top1n = []
+    top2 = []
+    top2n = []
+    jungle1 = []
+    jungle1n = []
+    jungle2 = []
+    jungle2n = []
+    mid1 = []
+    mid1n = []
+    mid2 = []
+    mid2n = []
+    adc1 = []
+    adc1n = []
+    adc2 = []
+    adc2n = []
+    supp1 = []
+    supp1n = []
+    supp2 = []
+    supp2n = []
+
+    for i in players:
+
+        datos = [i['kills'],i['assists'],i['totalDamageDealtToChampions'],i['goldEarned'],i['damageDealtToTurrets'],i['visionWardsBoughtInGame'],i['wardsPlaced'],i['wardsKilled'],i['deaths']]
+        posicion = i['teamPosition']
+        print(posicion)
+        print(datos)
+        print(i['teamId'])
+        if(str(i['teamId']) == "100" ):
+            equipo1_win = i['win']
+            if(str(posicion) == "TOP"):
+                top1 = datos
+                top1n = i['championName']
+            elif(str(posicion) == "JUNGLE"):
+                jungle1 = datos
+                jungle1n = i['championName']
+            elif(str(posicion) == "MIDDLE"):
+                mid1 = datos                
+                mid1n = i['championName']                
+            elif(str(posicion) == "BOTTOM"):
+                adc1 = datos
+                adc1n = i['championName']
+            elif(str(posicion) == "UTILITY"):
+                supp1 = datos                
+                supp1n = i['championName']               
+        elif (str(i['teamId']) == "200"):
+            if(str(posicion) == "TOP"):
+                top2 = datos
+                top2n = i['championName']
+            elif(str(posicion) == "JUNGLE"):
+                jungle2 = datos
+                jungle2n = i['championName']
+            elif(str(posicion) == "MIDDLE"):
+                mid2 = datos
+                mid2n = i['championName']
+            elif(str(posicion) == "BOTTOM"):
+                adc2 = datos
+                adc2n = i['championName']
+            elif(str(posicion) == "UTILITY"):
+                supp2 = datos
+                supp2n = i['championName']
+
+    conjunto_datos = [[top1,jungle1,mid1,adc1,supp1],[top2,jungle2,mid2,adc2,supp2]]
+    carreos = total_carreo(conjunto_datos)
+
+    if(equipo1_win == True):
+        dato_win_o_loss = "WIN"
+        dato_win_o_loss2 = "LOSS"
+    else:
+        dato_win_o_loss = "LOSS"
+        dato_win_o_loss2 = "WIN"
+
+    resultado = "Equipo 1: ("+dato_win_o_loss+"):\n" 
+    resultado += str(top1n) + " -> " + str(top1[0]) + " / " + str(top1[8]) + " / " + str(top1[1]) + " puntuación carreo -> " + str(carreos[0][0]) + "\n"        
+    resultado += str(jungle1n) + " -> " + str(jungle1[0]) + " / " + str(jungle1[8]) + " / " + str(jungle1[1]) + " puntuación carreo -> " + str(carreos[0][1]) + "\n"      
+    resultado += str(mid1n) + " -> " + str(mid1[0]) + " / " + str(mid1[8]) + " / " + str(mid1[1]) + " puntuación carreo -> " + str(carreos[0][2]) + "\n"       
+    resultado += str(adc1n) + " -> " + str(adc1[0]) + " / " + str(adc1[8]) + " / " + str(adc1[1]) + " puntuación carreo -> " + str(carreos[0][3]) + "\n"        
+    resultado += str(supp1n) + " -> " + str(supp1[0]) + " / " + str(supp1[8]) + " / " + str(supp1[1]) + " puntuación carreo -> " + str(carreos[0][4]) + "\n" 
+    resultado +=  "\n"  
+    resultado += "Equipo 2: ("+dato_win_o_loss2+"):\n" 
+    resultado += str(top2n) + " -> " + str(top2[0]) + " / " + str(top2[8]) + " / " + str(top2[1]) + " puntuación carreo -> " + str(carreos[1][0]) + "\n"        
+    resultado += str(jungle2n) + " -> " + str(jungle2[0]) + " / " + str(jungle2[8]) + " / " + str(jungle2[1]) + " puntuación carreo -> " + str(carreos[1][1]) + "\n"      
+    resultado += str(mid2n) + " -> " + str(mid2[0]) + " / " + str(mid2[8]) + " / " + str(mid2[1]) + " puntuación carreo -> " + str(carreos[1][2]) + "\n"       
+    resultado += str(adc2n) + " -> " + str(adc2[0]) + " / " + str(adc2[8]) + " / " + str(adc2[1]) + " puntuación carreo -> " + str(carreos[1][3]) + "\n"        
+    resultado += str(supp2n) + " -> " + str(supp2[0]) + " / " + str(supp2[8]) + " / " + str(supp2[1]) + " puntuación carreo -> " + str(carreos[1][4]) + "\n" 
+
+    return resultado
 
 #---FUNCIONES PRINCIPALES---
 
@@ -402,3 +505,4 @@ def lista_games_cola(total,cola):
 #print(maestria_campeones_rol_ordenado_hora('mid'))
 #print(lista_games(2))
 #print(lista_games_cola(20,'5v5 Ranked Solo'))
+print(carreo_partida('EUW1_6676047206'))
