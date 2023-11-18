@@ -7,7 +7,7 @@ import time
 nombre_invocador = "pablo911"
 
 #Key de la Api
-key = ""
+key = "RGAPI-5897f2b0-cd0d-4375-88ee-cd4ef48cadd1"
 
 #región a la que pertenece
 region = "euw1"
@@ -130,6 +130,19 @@ def carreo_partida(id): #lineas->(TOP,JUNGLE,MIDDLE,BOTTOM,UTILITY)
 
     conjunto_datos = [[top1,jungle1,mid1,adc1,supp1],[top2,jungle2,mid2,adc2,supp2]]
     carreos = total_carreo(conjunto_datos)
+    porcentajes_redondeados = []
+    print(carreos)
+    for subconjunto in carreos:
+        # Calcula la suma total del subconjunto
+        total_subconjunto = sum(subconjunto)
+
+        # Calcula el porcentaje para cada número del subconjunto y redondea a 2 cifras decimales
+        porcentajes = [(numero / total_subconjunto) * 100 for numero in subconjunto]
+        porcentajes_redondeados.append([round(porcentaje, 2) for porcentaje in porcentajes])
+    print(porcentajes_redondeados)
+    print("///")
+
+
 
     if(equipo1_win == True):
         dato_win_o_loss = "WIN"
@@ -139,18 +152,18 @@ def carreo_partida(id): #lineas->(TOP,JUNGLE,MIDDLE,BOTTOM,UTILITY)
         dato_win_o_loss2 = "WIN"
 
     resultado = "Equipo 1: ("+dato_win_o_loss+"):\n" 
-    resultado += str(top1n) + " -> " + str(top1[0]) + " / " + str(top1[8]) + " / " + str(top1[1]) + " puntuación carreo -> " + str(carreos[0][0]) + "\n"        
-    resultado += str(jungle1n) + " -> " + str(jungle1[0]) + " / " + str(jungle1[8]) + " / " + str(jungle1[1]) + " puntuación carreo -> " + str(carreos[0][1]) + "\n"      
-    resultado += str(mid1n) + " -> " + str(mid1[0]) + " / " + str(mid1[8]) + " / " + str(mid1[1]) + " puntuación carreo -> " + str(carreos[0][2]) + "\n"       
-    resultado += str(adc1n) + " -> " + str(adc1[0]) + " / " + str(adc1[8]) + " / " + str(adc1[1]) + " puntuación carreo -> " + str(carreos[0][3]) + "\n"        
-    resultado += str(supp1n) + " -> " + str(supp1[0]) + " / " + str(supp1[8]) + " / " + str(supp1[1]) + " puntuación carreo -> " + str(carreos[0][4]) + "\n" 
+    resultado += str(top1n) + " -> " + str(top1[0]) + " / " + str(top1[8]) + " / " + str(top1[1]) + " puntuación carreo -> " + str(porcentajes_redondeados[0][0]) + "%\n"        
+    resultado += str(jungle1n) + " -> " + str(jungle1[0]) + " / " + str(jungle1[8]) + " / " + str(jungle1[1]) + " puntuación carreo -> " + str(porcentajes_redondeados[0][1]) + "%\n"      
+    resultado += str(mid1n) + " -> " + str(mid1[0]) + " / " + str(mid1[8]) + " / " + str(mid1[1]) + " puntuación carreo -> " + str(porcentajes_redondeados[0][2]) + "%\n"       
+    resultado += str(adc1n) + " -> " + str(adc1[0]) + " / " + str(adc1[8]) + " / " + str(adc1[1]) + " puntuación carreo -> " + str(porcentajes_redondeados[0][3]) + "%\n"        
+    resultado += str(supp1n) + " -> " + str(supp1[0]) + " / " + str(supp1[8]) + " / " + str(supp1[1]) + " puntuación carreo -> " + str(porcentajes_redondeados[0][4]) + "%\n" 
     resultado +=  "\n"  
     resultado += "Equipo 2: ("+dato_win_o_loss2+"):\n" 
-    resultado += str(top2n) + " -> " + str(top2[0]) + " / " + str(top2[8]) + " / " + str(top2[1]) + " puntuación carreo -> " + str(carreos[1][0]) + "\n"        
-    resultado += str(jungle2n) + " -> " + str(jungle2[0]) + " / " + str(jungle2[8]) + " / " + str(jungle2[1]) + " puntuación carreo -> " + str(carreos[1][1]) + "\n"      
-    resultado += str(mid2n) + " -> " + str(mid2[0]) + " / " + str(mid2[8]) + " / " + str(mid2[1]) + " puntuación carreo -> " + str(carreos[1][2]) + "\n"       
-    resultado += str(adc2n) + " -> " + str(adc2[0]) + " / " + str(adc2[8]) + " / " + str(adc2[1]) + " puntuación carreo -> " + str(carreos[1][3]) + "\n"        
-    resultado += str(supp2n) + " -> " + str(supp2[0]) + " / " + str(supp2[8]) + " / " + str(supp2[1]) + " puntuación carreo -> " + str(carreos[1][4]) + "\n" 
+    resultado += str(top2n) + " -> " + str(top2[0]) + " / " + str(top2[8]) + " / " + str(top2[1]) + " puntuación carreo -> " + str(porcentajes_redondeados[1][0]) + "%\n"        
+    resultado += str(jungle2n) + " -> " + str(jungle2[0]) + " / " + str(jungle2[8]) + " / " + str(jungle2[1]) + " puntuación carreo -> " + str(porcentajes_redondeados[1][1]) + "%\n"      
+    resultado += str(mid2n) + " -> " + str(mid2[0]) + " / " + str(mid2[8]) + " / " + str(mid2[1]) + " puntuación carreo -> " + str(porcentajes_redondeados[1][2]) + "%\n"       
+    resultado += str(adc2n) + " -> " + str(adc2[0]) + " / " + str(adc2[8]) + " / " + str(adc2[1]) + " puntuación carreo -> " + str(porcentajes_redondeados[1][3]) + "%\n"        
+    resultado += str(supp2n) + " -> " + str(supp2[0]) + " / " + str(supp2[8]) + " / " + str(supp2[1]) + " puntuación carreo -> " + str(porcentajes_redondeados[1][4]) + "%\n" 
 
     return resultado
 
@@ -445,4 +458,4 @@ def lista_games_cola(total,cola):
 #print(maestria_campeones_rol_ordenado_hora('mid'))
 #print(lista_games(15))
 #print(lista_games_cola(20,'5v5 Ranked Solo'))
-print(carreo_partida('EUW1_6669112896'))
+print(carreo_partida('EUW1_6679852408'))
